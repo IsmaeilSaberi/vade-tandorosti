@@ -1,5 +1,5 @@
 import "../styles/globals.css";
-// import Header from "../components/header";
+import Header from "../components/header";
 // import Footer from "../components/footer";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -16,12 +16,11 @@ export default function RootLayout({ children }) {
       <header>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width ,initial-scale=1" />
-        <meta name="enamad" content="644682" />
         <link rel="shortcut icon" href="/logo.png" type="image/x-icon" />
       </header>
       <body>
         <ContextProvider>
-          {/* <Header /> */}
+          <Header />
           {children}
           {/* <Footer /> */}
         </ContextProvider>

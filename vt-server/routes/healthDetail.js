@@ -3,8 +3,6 @@ const router = express();
 
 const HealthDetailCtrl = require("../controllers/healthDetail.js");
 
-const authentication = require("../middleware/authentication.js");
-
 router.get("/", HealthDetailCtrl.getHealthDetails);
 router.post("/", HealthDetailCtrl.createHealthDetail);
 router.patch("/:id", HealthDetailCtrl.updateHealthDetail);

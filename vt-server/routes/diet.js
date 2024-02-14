@@ -3,8 +3,6 @@ const router = express();
 
 const DietCtrl = require("../controllers/diet.js");
 
-const authentication = require("../middleware/authentication.js");
-
 router.get("/", DietCtrl.getDietPost);
 router.post("/", DietCtrl.createDietPost);
 router.patch("/:id", DietCtrl.updateDietPost);

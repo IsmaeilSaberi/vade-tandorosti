@@ -1,21 +1,28 @@
-/* 
-    body-parser: enable send requests
-    cors: enable cors orgin requests
-    express: routing epxress framework
-    mongoose: creating models / connect mongoDB
-    nodemon: auto reset
-*/
 const express = require("express");
+const app = express();
+
+// importing installed packages
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const dotenv = require("dotenv");
+require("dotenv/config");
 
-const app = express();
-dotenv.config();
+// importing security packages
+const helmet = require("helmet");
+const mongoSanitize = require("express-mongo-sanitize");
+const hpp = require("hpp");
 
-app.use(bodyParser.json({ extended: true }));
-app.use(bodyParser.urlencoded({ extended: true }));
+// using middlewares
+app.use(bodyParser.json({ limit: "50mb" }));
+app.use(
+  bodyParser.urlencoded({
+    limit: "50mb",
+    extended: true,
+    parameterLimit: 50000,
+  })
+);
+app.use(cookieParser());
 app.use(cors());
 
 app.get("/", (req, res) => {
@@ -27,24 +34,21 @@ app.get("/", (req, res) => {
 // app.use("/HD", healthDetailRouter);
 
 // user Router
-const userRouter = require("./routes/user.js");
-app.use("/user", userRouter);
+const UserRoutes = require("./routes/UserRoutes.js");
+app.use("/user", UserRoutes);
 
 // diet Router
 const dietRouter = require("./routes/diet.js");
 app.use("/diet", dietRouter);
 
 // connect to mongoDB
-const CONNECTION_URL =
-  "mongodb+srv://Liam:Liam1809@cluster0.ifm61.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-const PORT = process.env.PORT || 4000;
+const CONNECTION_URL = process.env.CONNECTION_URL;
+
+const PORT = process.env.PORT || 27017;
 
 mongoose
-  .connect(process.env.CONNECTION_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+  .connect(CONNECTION_URL)
+  .then((d) => {
+    app.listen(PORT);
   })
-  .then(() =>
-    app.listen(PORT, () => console.log(`Server running on PORT: ${PORT}`))
-  )
-  .catch((error) => console.log(error.message));
+  .catch((err) => console.log(err));
