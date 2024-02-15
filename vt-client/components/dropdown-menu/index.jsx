@@ -1,12 +1,11 @@
 "use client";
-import { useState } from "react";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 
 // // USING CONTEXT
 import { useAppContext } from "@/context/app-context";
 
-const DropdownMenu = ({ isOpen, setIsOpen }) => {
+const DropdownMenu = ({ isOpen, setIsOpen, setMenuIsOpen }) => {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   // // IF USER WANTS TO LOGED IN OR REGISTERED IT DOSEN'T HAVE TOKEN AND ITS CART SHOULD BE ZERO AND DISPLAYNAME SHOULD BE ''
@@ -19,6 +18,7 @@ const DropdownMenu = ({ isOpen, setIsOpen }) => {
     router.push("/login");
     setIsOpen(false);
     setDisplayName("");
+    setMenuIsOpen(-1);
   };
 
   return (
@@ -47,7 +47,7 @@ const DropdownMenu = ({ isOpen, setIsOpen }) => {
         {isOpen && (
           <div
             onMouseLeave={() => toggleMenu()}
-            className="absolute w-36 z-30 md:z-50 top-5 -left-2 rounded shadow-lg bg-white"
+            className="absolute w-36 z-50 top-5 -left-40 md:-left-2 rounded shadow-lg bg-white"
           >
             <div className="block p-1 text-sm hover:bg-gray-100">
               <ul className="flex flex-col gap-1">
@@ -55,6 +55,7 @@ const DropdownMenu = ({ isOpen, setIsOpen }) => {
                   onClick={() => {
                     router.push("/account/info");
                     setIsOpen(false);
+                    setMenuIsOpen(-1);
                   }}
                   className="rounded flex justify-center items-center cursor-pointer transition-all duration-200 hover:bg-indigo-200 text-sm h-8 bg-indigo-100"
                 >
@@ -64,6 +65,7 @@ const DropdownMenu = ({ isOpen, setIsOpen }) => {
                   onClick={() => {
                     router.push("/account/comments");
                     setIsOpen(false);
+                    setMenuIsOpen(-1);
                   }}
                   className="rounded flex justify-center items-center cursor-pointer transition-all duration-200 hover:bg-indigo-200 text-sm h-8 bg-indigo-100"
                 >

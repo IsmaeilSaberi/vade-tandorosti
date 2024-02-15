@@ -306,6 +306,7 @@ const getPartOfUserData = async (req, res) => {
         username: 1,
         email: 1,
         role: 1,
+        gender: 1,
         createdAt: 1,
         updatedAt: 1,
       });

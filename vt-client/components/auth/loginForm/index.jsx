@@ -70,14 +70,14 @@ const LoginForm = () => {
     <section className="container mx-auto flex justify-center items-center">
       <form
         onSubmit={handleSubmit(formSubmitter)}
-        className="flex flex-col gap-6 m-4 md:m-8 w-full md:w-[30rem] bg-[#9bf5d4] rounded p-2 md:p-8"
+        className="flex flex-col border-2 border-[#004225] gap-6 m-4 md:m-8 w-full md:w-[30rem] bg-[#F5F5DC] rounded p-2 md:p-8"
       >
         <div className="flex justify-center items-center gap-6 ">
-          <h1 className="text-base md:text-lg text-center text-blue-500 ">
+          <h1 className="text-base md:text-xl text-center text-[#004225] font-bold">
             ورود به حساب
           </h1>
           <Link
-            className="bg-blue-400 rounded text-white px-2 py-1 transition-all duration-200 hover:bg-blue-500"
+            className="bg-[#FFB000] rounded text-[#004225] px-2 py-1 transition-all duration-200 hover:bg-blue-700 hover:text-white"
             href={"/register"}
           >
             ثبت نام در سایت
@@ -136,7 +136,7 @@ const LoginForm = () => {
         </div>
         <button
           type="submit"
-          className="bg-blue-500 rounded p-2 text-white w-full transitioln-all duration-200 hover:bg-blue-600"
+          className="bg-[#004225] rounded p-2 text-white w-full transitioln-all duration-200 hover:bg-[#FFB000]"
         >
           ورود به حساب کاربری
         </button>

@@ -28,7 +28,7 @@ const Info = ({ cookie }) => {
         )
         .then((d) => {
           setData(d.data);
-          setBulkEmailSituation(d.data.emailSend);
+          console.log(d.data);
         })
         .catch((err) => {
           toast.error("خطا در لود اطلاعات!", {

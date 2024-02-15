@@ -20,6 +20,11 @@ const UserSchema = new mongoose.Schema({
     enum: ["User", "TopAdmin", "Admin"],
     default: "User",
   },
+  gender: {
+    type: String,
+    required: true,
+    enum: ["Male", "Female"],
+  },
   comments: {
     required: true,
     type: Array,

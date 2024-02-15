@@ -15,7 +15,7 @@ const ContextProvider = ({ children }) => {
         headers: { auth_cookie: auth_cookie },
       })
       .then((d) => {
-        setDisplayName(d.data.displayName.displayname);
+        setDisplayName(d.data.displayName.username);
       })
       .catch((err) => {
         setDisplayName("");

@@ -91,10 +91,13 @@ const Header = () => {
           <div className="flex flex-col gap-2 justify-center">
             <nav className="flex flex-col md:flex-row justify-between items-center w-full">
               <ul className="flex text-sm flex-col flex-wrap md:flex-row justify-between gap-4 md:gap-8 items-center">
-                <li className="rounded  w-52 z-50 p-1 border-purple-300 border-[0.1rem] bg-[#004225] text-white hover:text-[#b12357]  text-center hover:shadow-gray-300 transition-all duration-200 hover:shadow-xl">
-                  <HeaderUser displayName={displayName} />
+                <li className="rounded  w-52 z-40 p-1 border-purple-300 border-[0.1rem] bg-[#004225] text-white hover:text-[#b12357]  text-center hover:shadow-gray-300 transition-all duration-200 hover:shadow-xl">
+                  <HeaderUser
+                    setMenuIsOpen={setMenuIsOpen}
+                    displayName={displayName}
+                  />
                 </li>
-                <li className="rounded  w-52 z-50 p-1 border-purple-300 border-[0.1rem] bg-[#004225] text-white hover:text-[#b12357]  text-center hover:shadow-gray-300 transition-all duration-200 hover:shadow-xl">
+                <li className="rounded  w-52 z-40 p-1 border-purple-300 border-[0.1rem] bg-[#004225] text-white hover:text-[#b12357]  text-center hover:shadow-gray-300 transition-all duration-200 hover:shadow-xl">
                   <Link
                     className="border-purple-300 border-[0.1rem] h-9 rounded px-1 flex justify-center items-center transition-all duration-200 hover:bg-[#9fe2a6] "
                     href={"/"}
@@ -103,7 +106,7 @@ const Header = () => {
                     خانه
                   </Link>
                 </li>
-                <li className="rounded  w-52 z-50 p-1 border-purple-300 border-[0.1rem] bg-[#004225] text-white hover:text-[#b12357]  text-center hover:shadow-gray-300 transition-all duration-200 hover:shadow-xl">
+                <li className="rounded  w-52 z-40 p-1 border-purple-300 border-[0.1rem] bg-[#004225] text-white hover:text-[#b12357]  text-center hover:shadow-gray-300 transition-all duration-200 hover:shadow-xl">
                   <Link
                     className="border-purple-300 border-[0.1rem] h-9 rounded px-1 flex justify-center items-center transition-all duration-200 hover:bg-[#9fe2a6] "
                     href={
@@ -114,7 +117,7 @@ const Header = () => {
                     فروشگاه
                   </Link>
                 </li>
-                <li className="rounded  w-52 z-50 p-1 border-purple-300 border-[0.1rem] bg-[#004225] text-white hover:text-[#b12357]  text-center hover:shadow-gray-300 transition-all duration-200 hover:shadow-xl">
+                <li className="rounded  w-52 z-40 p-1 border-purple-300 border-[0.1rem] bg-[#004225] text-white hover:text-[#b12357]  text-center hover:shadow-gray-300 transition-all duration-200 hover:shadow-xl">
                   <Link
                     className="border-purple-300 border-[0.1rem] h-9 rounded px-1 flex justify-center items-center transition-all duration-200 hover:bg-[#9fe2a6] "
                     href={"/blog"}

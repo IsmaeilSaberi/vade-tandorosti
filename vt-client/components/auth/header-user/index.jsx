@@ -4,7 +4,7 @@ import Image from "next/legacy/image";
 import Link from "next/link";
 import { useState } from "react";
 
-const HeaderUser = ({ displayName }) => {
+const HeaderUser = ({ displayName, setMenuIsOpen }) => {
   const [isOpen, setIsOpen] = useState(false);
   // _ REPLACER WITH SPACE
   function replaceUnderscoresWithSpaces(str) {
@@ -23,6 +23,7 @@ const HeaderUser = ({ displayName }) => {
       {displayName == "" || displayName == undefined ? (
         <div className="md:text-md flex h-7 justify-center items-center gap-2">
           <Link
+            onClick={() => setMenuIsOpen(-1)}
             className="text-sm cursor-pointer transition-all duration-200"
             href={"/register"}
           >
@@ -30,6 +31,7 @@ const HeaderUser = ({ displayName }) => {
           </Link>
           /
           <Link
+            onClick={() => setMenuIsOpen(-1)}
             className="text-sm cursor-pointer transition-all duration-200"
             href={"/login"}
           >
@@ -50,11 +52,15 @@ const HeaderUser = ({ displayName }) => {
             className="flex cursor-pointer transition-all duration-200  gap-1 items-center"
           >
             <div className="text-xs"> صفحه شخصی </div>
-            <div className="text-xs">
+            <div className="text-xs text-[#FFB000]">
               {replaceUnderscoresWithSpaces(displayName)}
             </div>
           </Link>
-          <DropdownMenu isOpen={isOpen} setIsOpen={setIsOpen} />
+          <DropdownMenu
+            setMenuIsOpen={setMenuIsOpen}
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+          />
         </div>
       )}
     </div>
