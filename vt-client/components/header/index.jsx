@@ -118,6 +118,15 @@ const Header = () => {
                 <li className="rounded  w-36 z-40 p-1 border-purple-300 border-[0.1rem] bg-[#004225] text-white hover:text-[#b12357]  text-center hover:shadow-gray-300 transition-all duration-200 hover:shadow-xl">
                   <Link
                     className="border-purple-300 border-[0.1rem] h-9 rounded px-1 flex justify-center items-center transition-all duration-200 hover:bg-[#9fe2a6] "
+                    href={"/healthcharts"}
+                    onClick={() => setMenuIsOpen(-1)}
+                  >
+                    نمودارهای سلامتی
+                  </Link>
+                </li>
+                <li className="rounded  w-36 z-40 p-1 border-purple-300 border-[0.1rem] bg-[#004225] text-white hover:text-[#b12357]  text-center hover:shadow-gray-300 transition-all duration-200 hover:shadow-xl">
+                  <Link
+                    className="border-purple-300 border-[0.1rem] h-9 rounded px-1 flex justify-center items-center transition-all duration-200 hover:bg-[#9fe2a6] "
                     href={"/blog"}
                     onClick={() => setMenuIsOpen(-1)}
                   >
