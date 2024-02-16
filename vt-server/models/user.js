@@ -30,6 +30,28 @@ const UserSchema = new mongoose.Schema({
     type: Array,
     default: [],
   },
+  age: {
+    required: true,
+    type: Number,
+  },
+  height: {
+    required: true,
+    type: Number,
+  },
+  weight: {
+    required: true,
+    type: Number,
+  },
+  BMI: {
+    required: true,
+    type: Number,
+    default: 0,
+  },
+  BMR: {
+    required: true,
+    type: Number,
+    default: 0,
+  },
   viewed: {
     required: true,
     type: Boolean,

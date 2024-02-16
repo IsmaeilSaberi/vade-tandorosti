@@ -62,11 +62,30 @@ const registerUser = async (req, res) => {
             data.password = req.body.password.replace(/\s+/g, "").toLowerCase();
             const hashedPassword = await bcrypt.hash(data.password, 10);
 
+            const BMI = Math.round((weight / (height * height)) * 100) / 100;
+
+            let BMR = 1;
+            if (data.gender == "Male") {
+              BMR =
+                65 +
+                9.563 * [data.weight] +
+                (16.5 * [data.height] - 65 * [data.age] + [data.age]);
+            } else {
+              BMR =
+                65 +
+                9.563 * [data.weight] +
+                (16.5 * [data.height] - 65 * [data.age] + [data.age]);
+            }
+
             const newUser = new User({
               username: data.username,
               email: data.email,
               password: hashedPassword,
               role: "User",
+              gender: data.gender,
+              age: data.age,
+              weight: data.weight,
+              height: data.height,
               comments: [],
               viewed: false,
               createdAt: new Date().toLocaleDateString("fa-IR", {
@@ -307,6 +326,11 @@ const getPartOfUserData = async (req, res) => {
         email: 1,
         role: 1,
         gender: 1,
+        age: 1,
+        weight: 1,
+        height: 1,
+        BMI: 1,
+        BMR: 1,
         createdAt: 1,
         updatedAt: 1,
       });
