@@ -91,10 +91,34 @@ const registerUser = async (req, res) => {
               role: "User",
               gender: data.gender,
               age: data.age,
-              weight: data.weight,
-              height: data.height,
-              BMI: BMI,
-              BMR: BMR,
+              weightHistory: {
+                weight: data.weight,
+                date: new Date().toLocaleDateString("fa-IR", {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                }),
+              },
+              heightHistory: {
+                height: data.height,
+                date: new Date().toLocaleDateString("fa-IR", {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                }),
+              },
+              bmiHistory: {
+                bmi: BMI,
+                date: new Date().toLocaleDateString("fa-IR", {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                }),
+              },
+              bmrHistory: {
+                bmr: BMR,
+                date: new Date().toLocaleDateString("fa-IR", {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                }),
+              },
               comments: [],
               viewed: false,
               createdAt: new Date().toLocaleDateString("fa-IR", {
@@ -213,7 +237,7 @@ const updateMiniUser = async (req, res) => {
     if (!errors.isEmpty()) {
       res.status(422).json({ msg: errors.errors[0].msg });
     } else {
-      if (req.body.username || req.body.email || req.body.viewed) {
+      if (req.body.email || req.body.viewed) {
         res.status(400).json({ msg: "خطا در اطلاعات فرستاده شده!" });
       } else {
         if (req.body.password == req.body.rePassword) {
@@ -258,30 +282,6 @@ const getOneUserById = async (req, res) => {
     const targetUser = await User.findById(req.params.id).select({
       password: false,
     });
-
-    // FOR ADDING FAVORITE PRODUCTS TO TARGET USER
-    const targetUserFavProducts = await Product.find({
-      _id: { $in: targetUser.favoriteProducts },
-    }).select({ title: 1, slug: 1 });
-    targetUser.favoriteProducts = targetUserFavProducts;
-
-    // FOR ADDING CART PRODUCTS TO TARGET USER
-    const targetUserCartProducts = await Product.find({
-      _id: { $in: targetUser.cart },
-    }).select({ title: 1, slug: 1 });
-    targetUser.cart = targetUserCartProducts;
-
-    // FOR ADDING BUYED PRODUCTS TO TARGET USER
-    const targetUseruserProducts = await Product.find({
-      _id: { $in: targetUser.userProducts },
-    }).select({ title: 1, slug: 1 });
-    targetUser.userProducts = targetUseruserProducts;
-
-    // FOR ADDING PAYMENTS TO TARGET USER
-    const targetUserPayments = await Payment.find({
-      email: targetUser.email,
-    }).select({ amount: 1, payed: 1, createdAt: 1 });
-    targetUser.payments = targetUserPayments;
 
     // FOR ADDING COMMENTS TO TARGET USER
     const targetUserComments = await Comment.find({
@@ -336,10 +336,10 @@ const getPartOfUserData = async (req, res) => {
         role: 1,
         gender: 1,
         age: 1,
-        weight: 1,
-        height: 1,
-        BMI: 1,
-        BMR: 1,
+        weightHistory: 1,
+        heightHistory: 1,
+        bmiHistory: 1,
+        bmrHistory: 1,
         createdAt: 1,
         updatedAt: 1,
       });
@@ -348,10 +348,10 @@ const getPartOfUserData = async (req, res) => {
       const targetUser = await User.findById(req.user._id).select({
         gender: 1,
         age: 1,
-        weight: 1,
-        height: 1,
-        BMI: 1,
-        BMR: 1,
+        weightHistory: 1,
+        heightHistory: 1,
+        bmiHistory: 1,
+        bmrHistory: 1,
         createdAt: 1,
         updatedAt: 1,
       });
@@ -477,7 +477,6 @@ const getNewItems = async (req, res) => {
     const newComments = await Comment.find({ viewed: false });
     const sendingData = {
       newUsersNumber: newUsers.length,
-
       newCommentsNumber: newComments.length,
     };
     res.status(200).json(sendingData);

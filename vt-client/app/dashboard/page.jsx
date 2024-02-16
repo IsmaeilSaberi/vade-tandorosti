@@ -4,9 +4,10 @@ import { notFound } from "next/navigation";
 
 const getAuthData = async (cookieValue) => {
   const goalData = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_URL}/api/get-user-admin-data`,
+    `${process.env.NEXT_PUBLIC_SERVER_URL}/user/get-user-admin-data`,
     { cache: "no-store", headers: { auth_cookie: cookieValue } }
   );
+
   const data = await goalData.json();
   if (!data._id) {
     notFound();

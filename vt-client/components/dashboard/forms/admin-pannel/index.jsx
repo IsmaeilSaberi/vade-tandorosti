@@ -11,10 +11,11 @@ const AdminPannel = () => {
 
   useEffect(() => {
     axios
-      .get(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/get-new-items`, {
+      .get(`${process.env.NEXT_PUBLIC_SERVER_URL}/user/get-new-items`, {
         headers: { auth_cookie: auth_cookie },
       })
       .then((d) => {
+        console.log(d.data);
         setNewItemsData(d.data);
       })
       .catch((err) => {
@@ -58,12 +59,6 @@ const AdminPannel = () => {
                 {newItemsData.newCommentsNumber}
               </span>{" "}
               کامنت جدید
-            </div>
-            <div>
-              <span className="rounded-full px-2 border-[0.05rem] border-red-600">
-                {newItemsData.newPaymentsNumber}
-              </span>{" "}
-              سفارش جدید
             </div>
           </div>
         )}

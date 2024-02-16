@@ -26,7 +26,7 @@ const AllUsers = ({ setUserDetailCtrl, setRandNumForUserClick }) => {
   useEffect(() => {
     axios
       .get(
-        `${process.env.NEXT_PUBLIC_SERVER_URL}/api/users?pn=${pageNumber}&&pgn=${paginate}`,
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/user/users?pn=${pageNumber}&&pgn=${paginate}`,
         {
           headers: { auth_cookie: auth_cookie },
         }

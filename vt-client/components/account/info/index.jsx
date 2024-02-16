@@ -53,6 +53,7 @@ const Info = ({ cookie }) => {
 
   const miniUpdater = () => {
     const formData = {
+      username: watch("username"),
       password: watch("password"),
       rePassword: watch("repassword"),
     };
@@ -74,6 +75,7 @@ const Info = ({ cookie }) => {
           progress: undefined,
         });
         setNeedRefresh(1);
+        logouter();
       })
       .catch((err) => {
         const errorMsg =
@@ -158,11 +160,11 @@ const Info = ({ cookie }) => {
               </div>
               <div className="flex justify-start border-2 border-[#FFB000] p-1 rounded items-center gap-4">
                 <div>وزن:</div>
-                <div>{data.weight} کیلوگرم</div>
+                <div>{data.weightHistory[0].weight} کیلوگرم</div>
               </div>
               <div className="flex justify-start border-2 border-[#FFB000] p-1 rounded items-center gap-4">
                 <div>قد:</div>
-                <div>{data.height} سانتی متر</div>
+                <div>{data.heightHistory[0].height} سانتی متر</div>
               </div>
               <div className="flex justify-start border-2 border-[#FFB000] p-1 rounded items-center gap-4">
                 <div>جنسیت:</div>
@@ -170,11 +172,39 @@ const Info = ({ cookie }) => {
               </div>
             </div>
             <div className="flex flex-col items-center gap-8 bg-[#e5fcde] w-full text-sm rounded p-4">
-              <div>به روز رسانی اطلاعات</div>
+              <div>به روز رسانی اطلاعات کاربری</div>
               <form
                 onSubmit={handleSubmit(miniUpdater)}
-                className="flex flex-col gap-6 m-8 w-full md:w-[30rem] bg-[#9bf5d4] rounded p-6"
+                className="flex flex-col border-2 border-[#004225] gap-6 m-2 w-full md:w-[30rem] bg-[#F5F5DC] rounded p-2 md:p-8"
               >
+                <div className="flex flex-col gap-1">
+                  <input
+                    type="text"
+                    autoComplete="off"
+                    placeholder="نام کاربری جدید"
+                    className="p-2 w-full outline-none border-zinc-400 border-2 rounded focus:border-[#18e52d] "
+                    {...register("username", {
+                      required: true,
+                      maxLength: 25,
+                      minLength: 5,
+                    })}
+                  />
+                  {errors.username && errors.username.type == "required" && (
+                    <div className="text-rose-500 text-sm">
+                      نام کاربری جدید وارد نشده است!
+                    </div>
+                  )}
+                  {errors.username && errors.username.type == "maxLength" && (
+                    <div className="text-rose-500 text-sm">
+                      نام کاربری جدید باید کمتر از 25 کاراکتر باشد!
+                    </div>
+                  )}
+                  {errors.username && errors.username.type == "minLength" && (
+                    <div className="text-rose-500 text-sm">
+                      نام کاربری جدید باید بیشتر از 5 کاراکتر باشد!
+                    </div>
+                  )}
+                </div>
                 <div className="flex flex-col gap-1">
                   <input
                     type="password"
@@ -184,22 +214,22 @@ const Info = ({ cookie }) => {
                     {...register("password", {
                       required: true,
                       maxLength: 20,
-                      minLength: 8,
+                      minLength: 6,
                     })}
                   />
                   {errors.password && errors.password.type == "required" && (
                     <div className="text-rose-500 text-sm">
-                      رمز عبور وارد نشده است!
+                      رمز عبور جدید وارد نشده است!
                     </div>
                   )}
                   {errors.password && errors.password.type == "maxLength" && (
                     <div className="text-rose-500 text-sm">
-                      رمز عبور باید کمتر از 20 کاراکتر باشد!
+                      رمز عبور جدید باید کمتر از 20 کاراکتر باشد!
                     </div>
                   )}
                   {errors.password && errors.password.type == "minLength" && (
                     <div className="text-rose-500 text-sm">
-                      رمز عبور باید بیشتر از 6 کاراکتر باشد!
+                      رمز عبور جدید باید بیشتر از 6 کاراکتر باشد!
                     </div>
                   )}
                 </div>
@@ -217,21 +247,21 @@ const Info = ({ cookie }) => {
                   {errors.repassword &&
                     errors.repassword.type == "required" && (
                       <div className="text-rose-500 text-sm">
-                        تکرار رمز عبور وارد نشده است!
+                        تکرار رمز عبور جدید وارد نشده است!
                       </div>
                     )}
                   {errors.repassword &&
                     errors.repassword.type == "validate" && (
                       <div className="text-rose-500 text-sm">
-                        رمز عبور وارد شده مطابقت ندارد!
+                        رمز عبور جدید وارد شده مطابقت ندارد!
                       </div>
                     )}
                 </div>
                 <button
                   type="submit"
-                  className="bg-[#b17d23] rounded p-2 text-white w-full transitioln-all duration-200 hover:bg-indigo-700"
+                  className="bg-[#004225] rounded p-2 text-white w-full transitioln-all duration-200 hover:bg-[#FFB000]"
                 >
-                  به روز رسانی
+                  بروز رسانی اطلاعات
                 </button>
               </form>
             </div>

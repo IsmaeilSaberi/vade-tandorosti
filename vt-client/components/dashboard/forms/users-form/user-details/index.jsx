@@ -37,7 +37,7 @@ const UserDetails = ({ userId }) => {
   const [fullData, setFullData] = useState([-1]);
   useEffect(() => {
     axios
-      .get(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/get-user/${userId}`, {
+      .get(`${process.env.NEXT_PUBLIC_SERVER_URL}/user/get-user/${userId}`, {
         headers: { auth_cookie: auth_cookie },
       })
       .then((d) => {
@@ -77,7 +77,7 @@ const UserDetails = ({ userId }) => {
       emailSend: emailSendRef.current.value,
       activateCodeSendingNumber: activateCodeSendingNumberRef.current.value,
     };
-    const url = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/update-user/${userId}`;
+    const url = `${process.env.NEXT_PUBLIC_SERVER_URL}/user/update-user/${userId}`;
     axios
       .post(url, formData, {
         headers: { auth_cookie: auth_cookie },
@@ -110,7 +110,7 @@ const UserDetails = ({ userId }) => {
 
   // this part is used to delete a user
   const remover = (e) => {
-    const url = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/remove-user/${userId}`;
+    const url = `${process.env.NEXT_PUBLIC_SERVER_URL}/user/remove-user/${userId}`;
     axios
       .post(
         url,
@@ -143,7 +143,7 @@ const UserDetails = ({ userId }) => {
 
   // this part is used to uncheck a payment
   const paymentUnchecker = (goalId) => {
-    const url = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/uncheck-payment/${goalId}`;
+    const url = `${process.env.NEXT_PUBLIC_SERVER_URL}/user/uncheck-payment/${goalId}`;
     axios
       .get(url, {
         headers: { auth_cookie: auth_cookie },
@@ -172,7 +172,7 @@ const UserDetails = ({ userId }) => {
 
   // this part is used to uncheck a comment
   const commentUnchecker = (goalId) => {
-    const url = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/uncheck-comment/${goalId}`;
+    const url = `${process.env.NEXT_PUBLIC_SERVER_URL}/user/uncheck-comment/${goalId}`;
     axios
       .get(url, {
         headers: { auth_cookie: auth_cookie },

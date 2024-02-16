@@ -21,7 +21,7 @@ const FindUser = () => {
     const formData = {
       email: emailRef.current.value,
     };
-    const url = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/search-user`;
+    const url = `${process.env.NEXT_PUBLIC_SERVER_URL}/user/search-user`;
     axios
       .post(url, formData, {
         headers: { auth_cookie: auth_cookie },

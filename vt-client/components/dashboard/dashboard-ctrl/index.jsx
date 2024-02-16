@@ -16,46 +16,6 @@ const DashboardCtrl = ({ setContentChanger, setMenuIsOpen }) => {
           setMenuIsOpen={setMenuIsOpen}
         />
         <DCBtn
-          title={"بنرهای تبلیغاتی"}
-          content={"middleBanner"}
-          setContentChanger={setContentChanger}
-          colorChanger={colorChanger}
-          setColorChanger={setColorChanger}
-          setMenuIsOpen={setMenuIsOpen}
-        />
-        <DCBtn
-          title={"اسلایدرها"}
-          content={"sliders"}
-          setContentChanger={setContentChanger}
-          colorChanger={colorChanger}
-          setColorChanger={setColorChanger}
-          setMenuIsOpen={setMenuIsOpen}
-        />
-        <DCBtn
-          title={"پست ها"}
-          content={"posts"}
-          setContentChanger={setContentChanger}
-          colorChanger={colorChanger}
-          setColorChanger={setColorChanger}
-          setMenuIsOpen={setMenuIsOpen}
-        />
-        <DCBtn
-          title={"دسته بندی محصول"}
-          content={"categories"}
-          setContentChanger={setContentChanger}
-          colorChanger={colorChanger}
-          setColorChanger={setColorChanger}
-          setMenuIsOpen={setMenuIsOpen}
-        />
-        <DCBtn
-          title={"محصولات"}
-          content={"products"}
-          setContentChanger={setContentChanger}
-          colorChanger={colorChanger}
-          setColorChanger={setColorChanger}
-          setMenuIsOpen={setMenuIsOpen}
-        />
-        <DCBtn
           title={"کاربرها"}
           content={"users"}
           setContentChanger={setContentChanger}
@@ -66,22 +26,6 @@ const DashboardCtrl = ({ setContentChanger, setMenuIsOpen }) => {
         <DCBtn
           title={"دیدگاهها"}
           content={"comments"}
-          setContentChanger={setContentChanger}
-          colorChanger={colorChanger}
-          setColorChanger={setColorChanger}
-          setMenuIsOpen={setMenuIsOpen}
-        />
-        <DCBtn
-          title={"سفارشات"}
-          content={"payments"}
-          setContentChanger={setContentChanger}
-          colorChanger={colorChanger}
-          setColorChanger={setColorChanger}
-          setMenuIsOpen={setMenuIsOpen}
-        />
-        <DCBtn
-          title={"قوانین"}
-          content={"rules"}
           setContentChanger={setContentChanger}
           colorChanger={colorChanger}
           setColorChanger={setColorChanger}

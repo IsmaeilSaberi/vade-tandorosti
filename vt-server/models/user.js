@@ -34,24 +34,66 @@ const UserSchema = new mongoose.Schema({
     required: true,
     type: Number,
   },
-  height: {
-    required: true,
-    type: Number,
-  },
-  weight: {
-    required: true,
-    type: Number,
-  },
-  BMI: {
-    required: true,
-    type: Number,
-    default: 0,
-  },
-  BMR: {
-    required: true,
-    type: Number,
-    default: 0,
-  },
+  heightHistory: [
+    {
+      height: {
+        type: Number,
+        required: true,
+      },
+      date: {
+        type: String,
+        default: new Date().toLocaleDateString("fa-IR", {
+          hour: "2-digit",
+          minute: "2-digit",
+        }),
+      },
+    },
+  ],
+  weightHistory: [
+    {
+      weight: {
+        type: Number,
+        required: true,
+      },
+      date: {
+        type: String,
+        default: new Date().toLocaleDateString("fa-IR", {
+          hour: "2-digit",
+          minute: "2-digit",
+        }),
+      },
+    },
+  ],
+  bmrHistory: [
+    {
+      bmr: {
+        type: Number,
+        required: true,
+      },
+      date: {
+        type: String,
+        default: new Date().toLocaleDateString("fa-IR", {
+          hour: "2-digit",
+          minute: "2-digit",
+        }),
+      },
+    },
+  ],
+  bmiHistory: [
+    {
+      date: {
+        type: String,
+        default: new Date().toLocaleDateString("fa-IR", {
+          hour: "2-digit",
+          minute: "2-digit",
+        }),
+      },
+      bmi: {
+        type: Number,
+        required: true,
+      },
+    },
+  ],
   viewed: {
     required: true,
     type: Boolean,

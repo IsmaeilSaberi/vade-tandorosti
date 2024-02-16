@@ -183,10 +183,31 @@ const RegisterForm = () => {
           )}
           {errors.age && errors.age.type == "min" && (
             <div className="text-rose-500 text-sm">
-              عدد سن باید بزرگتر از صفر باشد!
+              عدد وزن باید بزرگتر از صفر باشد!
             </div>
           )}
         </div>
+        {/* <div className="flex flex-col gap-1">
+          <div>تاریخ تولد</div>
+          <input
+            type="date"
+            placeholder="سن(به سال)"
+            className="p-2 w-full outline-none border-zinc-400 border-2 rounded focus:border-[#18e52d] "
+            {...register("age", {
+              required: true,
+              min: 1,
+              valueAsNumber: true,
+              pattern: {
+                value: /^(0|[1-9]\d*)(\.\d+)?$/,
+              },
+            })}
+          />
+          {errors.age && errors.age.type == "required" && (
+            <div className="text-rose-500 text-sm">
+              لطفا تاریخ تولد خود را وارد کنید!
+            </div>
+          )}
+        </div> */}
         <div className="flex flex-col gap-1">
           <input
             type="number"

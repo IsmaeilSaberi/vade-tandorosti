@@ -2,14 +2,9 @@
 import { useEffect, useState } from "react";
 import DashboardCtrl from "../dashboard-ctrl";
 
-import MiddleBannerMain from "../forms/middle-banner-form";
-import SlidersMain from "../forms/sliders-form";
 import PostMain from "../forms/posts-form";
-import CategoryMain from "../forms/category-form";
-import ProductMain from "../forms/products-form";
 import AdminPannel from "../forms/admin-pannel";
 import UserMain from "../forms/users-form";
-import PaymentsMain from "../forms/payments-form";
 import CommentsMain from "../forms/comments-form";
 import { MdOutlineDashboard } from "react-icons/md";
 import { AiOutlineClose } from "react-icons/ai";
@@ -27,26 +22,12 @@ const MainDashboard = () => {
   };
 
   useEffect(() => {
-    if (contentChanger == "middleBanner") {
-      setDetails(<MiddleBannerMain />);
-    } else if (contentChanger == "sliders") {
-      setDetails(<SlidersMain />);
-    } else if (contentChanger == "posts") {
-      setDetails(<PostMain />);
-    } else if (contentChanger == "categories") {
-      setDetails(<CategoryMain />);
-    } else if (contentChanger == "products") {
-      setDetails(<ProductMain />);
+    if (contentChanger == "admin-pannel") {
+      setDetails(<AdminPannel />);
     } else if (contentChanger == "users") {
       setDetails(<UserMain />);
-    } else if (contentChanger == "payments") {
-      setDetails(<PaymentsMain />);
     } else if (contentChanger == "comments") {
       setDetails(<CommentsMain />);
-    } else if (contentChanger == "rules") {
-      setDetails(<RuleMain />);
-    } else if (contentChanger == "admin-pannel") {
-      setDetails(<AdminPannel />);
     }
     goToTop();
   }, [contentChanger]);

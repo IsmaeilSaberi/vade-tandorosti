@@ -132,11 +132,11 @@ const HealthParameters = ({ cookie }) => {
               </div>
               <div className="flex justify-start border-2 border-[#FFB000] p-1 rounded items-center gap-4">
                 <div>وزن:</div>
-                <div>{data.weight} کیلوگرم</div>
+                <div>{data.weightHistory[0].weight} کیلوگرم</div>
               </div>
               <div className="flex justify-start border-2 border-[#FFB000] p-1 rounded items-center gap-4">
                 <div>قد:</div>
-                <div>{data.height} سانتی متر</div>
+                <div>{data.heightHistory[0].height} سانتی متر</div>
               </div>
               <div className="flex justify-start border-2 border-[#FFB000] p-1 rounded items-center gap-4">
                 <div>جنسیت:</div>
@@ -150,12 +150,12 @@ const HealthParameters = ({ cookie }) => {
                 </h3>
                 <div
                   className={
-                    data.BMI > 18.5 && data.BMI < 25
+                    data.bmiHistory[0].bmi > 18.5 && data.bmiHistory[0].bmi < 25
                       ? "text-[#004225] text-2xl font-bold bg-[#FFB000] p-1 rounded"
                       : "text-[#9a031e] text-2xl font-bold bg-[#FFB000] p-1 rounded"
                   }
                 >
-                  {data.BMI}
+                  {data.bmiHistory[0].bmi}
                 </div>
               </div>
               <div className="flex gap-2 border-2 border-[#004225] rounded p-4">
@@ -163,7 +163,7 @@ const HealthParameters = ({ cookie }) => {
                   نرخ متابولیک یا سوخت و ساز پایه شما(BMR):{" "}
                 </h3>
                 <div className="text-[#9a031e] text-2xl font-bold bg-[#FFB000] p-1 rounded">
-                  {data.BMR}{" "}
+                  {data.bmrHistory[0].bmr}{" "}
                   <span className="text-sm text-gray-600">کالری</span>
                 </div>
               </div>
