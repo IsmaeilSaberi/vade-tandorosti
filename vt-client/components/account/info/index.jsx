@@ -28,7 +28,6 @@ const Info = ({ cookie }) => {
         )
         .then((d) => {
           setData(d.data);
-          console.log(d.data);
         })
         .catch((err) => {
           toast.error("خطا در لود اطلاعات!", {
@@ -107,13 +106,13 @@ const Info = ({ cookie }) => {
         <meta name="robots" content="index,follow" />
         <link rel="canonical" href="http://localhost:3000/account/info" />
       </>
-      <h3 className="text-lg absolute top-1 right-1 ">اطلاعات من</h3>
+      <h3 className="text-lg absolute top-1 right-1 ">اطلاعات کلی من</h3>
       <div
         onClick={() => {
           setNeedRefresh(1);
           setData([-1]);
         }}
-        className="absolute top-1 left-0 flex justify-center items-center rounded cursor-pointer transition-all duration-200 text-white hover:bg-indigo-400 text-sm gap-1 w-28 h-10 bg-[#2357b1]"
+        className="absolute top-0 left-0 flex justify-center items-center rounded cursor-pointer transition-all duration-200 text-white hover:bg-indigo-400 text-xs gap-1 w-20 h-8 bg-[#2357b1]"
       >
         <FiRefreshCcw />
         به روز رسانی
@@ -129,8 +128,8 @@ const Info = ({ cookie }) => {
             />
           </div>
         ) : (
-          <div className="flex flex-col gap-6">
-            <div className="flex justify-between items-center gap-6 flex-wrap">
+          <div className="flex flex-col gap-6 p-2">
+            <div className="flex justify-between m-1 items-center gap-6 flex-wrap">
               <div className="flex justify-center gap-4 items-center bg-[#e5fcde] w-full md:w-60 text-sm h-10 rounded p-1">
                 <div>تاریخ ثبت نام:</div>
                 <div>{data.createdAt}</div>
@@ -140,18 +139,34 @@ const Info = ({ cookie }) => {
                 <div>{data.updatedAt}</div>
               </div>
             </div>
-            <div className="flex flex-col gap-8 bg-[#e5fcde] w-full text-sm rounded p-4">
-              <div className="flex justify-start items-center gap-4">
+            <div className="flex flex-wrap gap-8 bg-[#e5fcde] w-full text-sm rounded p-4">
+              <div className="flex justify-start border-2 border-[#FFB000] p-1 rounded items-center gap-4">
                 <div>نام کاربری:</div>
                 <div>{data.username.replace(/_/g, " ")}</div>
               </div>
-              <div className="flex justify-start items-center gap-4">
+              <div className="flex justify-start border-2 border-[#FFB000] p-1 rounded items-center gap-4">
                 <div>نام نمایشی:</div>
                 <div>{data.username.replace(/_/g, " ")}</div>
               </div>
-              <div className="flex justify-start items-center gap-4">
+              <div className="flex justify-start border-2 border-[#FFB000] p-1 rounded items-center gap-4">
                 <div>آدرس ایمیل:</div>
                 <div>{data.email}</div>
+              </div>
+              <div className="flex justify-start border-2 border-[#FFB000] p-1 rounded items-center gap-4">
+                <div>سن:</div>
+                <div>{data.age}</div>
+              </div>
+              <div className="flex justify-start border-2 border-[#FFB000] p-1 rounded items-center gap-4">
+                <div>وزن:</div>
+                <div>{data.weight} کیلوگرم</div>
+              </div>
+              <div className="flex justify-start border-2 border-[#FFB000] p-1 rounded items-center gap-4">
+                <div>قد:</div>
+                <div>{data.height} سانتی متر</div>
+              </div>
+              <div className="flex justify-start border-2 border-[#FFB000] p-1 rounded items-center gap-4">
+                <div>جنسیت:</div>
+                <div>{data.gender == "Male" ? "آقا" : "خانم"}</div>
               </div>
             </div>
             <div className="flex flex-col items-center gap-8 bg-[#e5fcde] w-full text-sm rounded p-4">

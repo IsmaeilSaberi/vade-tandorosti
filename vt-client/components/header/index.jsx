@@ -56,7 +56,7 @@ const Header = () => {
   }, [menuIsOpen]);
 
   return (
-    <header className="container mx-auto md:border-2 my-2 h-[10vh] md:h-[24vh] relative z-50 text-[#004225]">
+    <header className="container mx-auto md:border-2 my-2 h-[12vh] md:h-[26vh] relative z-50 text-[#004225]">
       <div
         className={
           menuIsOpen == -1
@@ -77,8 +77,8 @@ const Header = () => {
               <div className="flex justify-center items-center">
                 <Image
                   className="rounded"
-                  width={100}
-                  height={100}
+                  width={80}
+                  height={80}
                   src={"/logo.png"}
                   alt="logo"
                 />
@@ -90,14 +90,14 @@ const Header = () => {
           </div>
           <div className="flex flex-col gap-2 justify-center">
             <nav className="flex flex-col md:flex-row justify-between items-center w-full">
-              <ul className="flex text-sm flex-col flex-wrap md:flex-row justify-between gap-4 md:gap-8 items-center">
+              <ul className="flex text-sm flex-col flex-wrap md:flex-row justify-between gap-4 md:gap-2 items-center">
                 <li className="rounded  w-52 z-40 p-1 border-purple-300 border-[0.1rem] bg-[#004225] text-white hover:text-[#b12357]  text-center hover:shadow-gray-300 transition-all duration-200 hover:shadow-xl">
                   <HeaderUser
                     setMenuIsOpen={setMenuIsOpen}
                     displayName={displayName}
                   />
                 </li>
-                <li className="rounded  w-52 z-40 p-1 border-purple-300 border-[0.1rem] bg-[#004225] text-white hover:text-[#b12357]  text-center hover:shadow-gray-300 transition-all duration-200 hover:shadow-xl">
+                <li className="rounded  w-36 z-40 p-1 border-purple-300 border-[0.1rem] bg-[#004225] text-white hover:text-[#b12357]  text-center hover:shadow-gray-300 transition-all duration-200 hover:shadow-xl">
                   <Link
                     className="border-purple-300 border-[0.1rem] h-9 rounded px-1 flex justify-center items-center transition-all duration-200 hover:bg-[#9fe2a6] "
                     href={"/"}
@@ -106,18 +106,16 @@ const Header = () => {
                     خانه
                   </Link>
                 </li>
-                <li className="rounded  w-52 z-40 p-1 border-purple-300 border-[0.1rem] bg-[#004225] text-white hover:text-[#b12357]  text-center hover:shadow-gray-300 transition-all duration-200 hover:shadow-xl">
+                <li className="rounded  w-36 z-40 p-1 border-purple-300 border-[0.1rem] bg-[#004225] text-white hover:text-[#b12357]  text-center hover:shadow-gray-300 transition-all duration-200 hover:shadow-xl">
                   <Link
                     className="border-purple-300 border-[0.1rem] h-9 rounded px-1 flex justify-center items-center transition-all duration-200 hover:bg-[#9fe2a6] "
-                    href={
-                      "/shop?&orderBy=date&maxP=100000000&minP=0&pgn=12&pn=1"
-                    }
+                    href={"/account/healthparameters"}
                     onClick={() => setMenuIsOpen(-1)}
                   >
-                    فروشگاه
+                    شاخص های سلامتی
                   </Link>
                 </li>
-                <li className="rounded  w-52 z-40 p-1 border-purple-300 border-[0.1rem] bg-[#004225] text-white hover:text-[#b12357]  text-center hover:shadow-gray-300 transition-all duration-200 hover:shadow-xl">
+                <li className="rounded  w-36 z-40 p-1 border-purple-300 border-[0.1rem] bg-[#004225] text-white hover:text-[#b12357]  text-center hover:shadow-gray-300 transition-all duration-200 hover:shadow-xl">
                   <Link
                     className="border-purple-300 border-[0.1rem] h-9 rounded px-1 flex justify-center items-center transition-all duration-200 hover:bg-[#9fe2a6] "
                     href={"/blog"}

@@ -62,19 +62,26 @@ const registerUser = async (req, res) => {
             data.password = req.body.password.replace(/\s+/g, "").toLowerCase();
             const hashedPassword = await bcrypt.hash(data.password, 10);
 
-            const BMI = Math.round((weight / (height * height)) * 100) / 100;
+            const BMI = (
+              data.weight /
+              ((data.height / 100) * (data.height / 100))
+            ).toFixed(2);
 
             let BMR = 1;
             if (data.gender == "Male") {
-              BMR =
-                65 +
-                9.563 * [data.weight] +
-                (16.5 * [data.height] - 65 * [data.age] + [data.age]);
+              BMR = (
+                88.362 +
+                13.397 * data.weight +
+                4.799 * data.height -
+                5.677 * data.age
+              ).toFixed(2);
             } else {
-              BMR =
-                65 +
-                9.563 * [data.weight] +
-                (16.5 * [data.height] - 65 * [data.age] + [data.age]);
+              BMR = (
+                447.593 +
+                9.247 * data.weight +
+                3.098 * data.height -
+                4.33 * data.age
+              ).toFixed(2);
             }
 
             const newUser = new User({
@@ -86,6 +93,8 @@ const registerUser = async (req, res) => {
               age: data.age,
               weight: data.weight,
               height: data.height,
+              BMI: BMI,
+              BMR: BMR,
               comments: [],
               viewed: false,
               createdAt: new Date().toLocaleDateString("fa-IR", {
@@ -325,6 +334,18 @@ const getPartOfUserData = async (req, res) => {
         username: 1,
         email: 1,
         role: 1,
+        gender: 1,
+        age: 1,
+        weight: 1,
+        height: 1,
+        BMI: 1,
+        BMR: 1,
+        createdAt: 1,
+        updatedAt: 1,
+      });
+      res.status(200).json(targetUser);
+    } else if (theSlug == "healthparameters") {
+      const targetUser = await User.findById(req.user._id).select({
         gender: 1,
         age: 1,
         weight: 1,

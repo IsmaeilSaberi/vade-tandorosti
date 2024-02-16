@@ -2,7 +2,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import BlogBox from "../blogs/blogbox";
-import SearchBlog from "../search-blog";
 import Image from "next/image";
 
 const BlogPageComp = ({ url }) => {
@@ -56,7 +55,6 @@ const BlogPageComp = ({ url }) => {
             {searchedPostsNumber} مقاله
           </div>
         </div>
-        <SearchBlog />
       </section>
       <div className=" flex flex-col gap-8">
         <div className="flex flex-col gap-6">
